@@ -9,8 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var name = ""
+    @EnvironmentObject var authorizationStatus: UserSettings
+    
     var body: some View {
-        Text("Hello World")
+        VStack{
+            if self.name.isEmpty {
+                SignUpWithAppleView(name: $name)
+                .frame(width: 200, height: 50)
+            }
+            else{
+                Text("Welcome\n\(self.name)")
+                    .font(.headline)
+            }
+        }
     }
 }
 
